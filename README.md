@@ -1,10 +1,10 @@
-# Java Lesson
+# Java Study
 
 ## 2019-12-05
 
 ### 公告
 
-1. 想让大家平时练习时就把 git 和 maven 用上，今晚讲一下它们的简单用法
+1. 平时练习时最好就把 git 和 maven 用上，今晚讲一下它们的简单用法
    - 在 github 上创建项目
    - 创建 maven 项目，常见的配置，如何在 pom.xml 加入依赖项目
    - maven 编译
