@@ -18,7 +18,7 @@ public class Demo04FileOutputStream {
         byte[] bs = str.getBytes();
         // 写入数据
         out.write(bs); // 很粗暴
-        out.flush(); // 把缓冲器的数据推送到输出流里（是否使用，看数据量，大用小可不用）
+        out.flush(); // 把缓冲区的数据推送到输出流里（是否使用，看数据量，大用小可不用）
         // 关闭流
         out.close();
     }
