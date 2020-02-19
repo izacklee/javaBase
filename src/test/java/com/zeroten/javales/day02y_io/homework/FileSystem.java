@@ -48,9 +48,10 @@ public class FileSystem {
                     num = 2;
                 }
                 File f2 = fileExists(path, name);
+                InputStream input = null;
                 if(f2 != null) {
                     try {
-                        InputStream input = new FileInputStream(f2);
+                        input = new FileInputStream(f2);
                         int len = input.available(); // 获取文件字节长度
                         byte[] bs = new byte[len];
                         int temp = -1;
@@ -61,9 +62,16 @@ public class FileSystem {
                         }
                         String str = new String(bs);
                         System.out.println(str);
-                        input.close();
                     } catch(Exception e) {
                         e.printStackTrace();
+                    } finally {
+                        if(input != null) {
+                            try {
+                                input.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 } else {
                     System.out.print("文件不存在，查看失败");
@@ -106,6 +114,7 @@ public class FileSystem {
                     num = 4;
                 }
                 File f2 = notFileExists(path, name);
+                OutputStream out = null;
                 if(f2 != null) {
                     try {
                         boolean b = f2.createNewFile();
@@ -114,7 +123,7 @@ public class FileSystem {
                             String content = s.next();
                             // 获取内容的字节数组
                             byte[] bs = content.getBytes();
-                            OutputStream out = new FileOutputStream(f2);
+                            out = new FileOutputStream(f2);
                             for(byte c : bs) {
                                 out.write(c); // 将数据写入文件
                             }
@@ -126,6 +135,14 @@ public class FileSystem {
                         }
                     } catch(Exception e) {
                         e.printStackTrace();
+                    } finally {
+                        if(out != null) {
+                            try {
+                                out.close();
+                            } catch(Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
                     }
                 } else {
                     System.out.println("文件已存在，请勿重复添加");

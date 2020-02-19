@@ -1,0 +1,9 @@
+1.FileInputStream是通过本地调用，来获取字节。
+
+2.DataBufferedStream/BufferedInputStream是由FileInputStream的read()来获取字节。
+
+3.FileInputStream可以处理字节，自由发挥，只要给一个byte数组就行。
+
+4.流的核心，就是数组，字节流的核心，是byte[]。
+
+5.Reade的核心，实际上是一个char类型的数组，最直观的表现形式是String。
