@@ -1,9 +1,61 @@
 1.FileInputStream是通过本地调用，来获取字节。
 
-2.DataBufferedStream/BufferedInputStream是由FileInputStream的read()来获取字节。
+2.DataInputStream/BufferedInputStream是由FileInputStream的read()来获取字节。
 
 3.FileInputStream可以处理字节，自由发挥，只要给一个byte数组就行。
 
 4.流的核心，就是数组，字节流的核心，是byte[]。
 
-5.Reade的核心，实际上是一个char类型的数组，最直观的表现形式是String。
+5.Reader的核心，实际上是一个char类型的数组，最直观的表现形式是String(String的本质就是char[]类型数组)。
+
+6.InputStreamReader的主要作用是解码，不处理缓冲。
+
+7.BufferedReader
+    （1）处理缓冲，是将字节读进来，放到数组里，一次性返回。
+    （2）作用，读行。
+
+8.优化缓冲，就是优化数组的读写
+    （1）减少内存的反复开辟
+    （2）合理复用
+
+9.输出流：字节流也是数组。
+
+10.字节流本质上是不处理缓冲区的。
+
+11.FileOutputStream是没有flush的，就是没有实现flush的作用。
+
+12.BufferedOutputStream：本身的目的就是为了处理缓冲。
+    （1）writer是没有真正的写出去，只是往数组里添加元素。
+    （2）flush被调用时，才真正写出去。
+    （3）也就是说，所谓清空缓冲，只是把数组中保存的元素，一次性复制出去。
+    （4）它的父类FileOutputStream的flush啥也没干。
+
+13.DataOutputStream本身没有缓冲。
+    （1）flush啥也没干
+    （2）真正实现的是它的flush方法
+
+14.PrintStream：也是没有缓冲的
+    （1）真正实现的是它的printxxx方法
+    （2）它的本质是操作PrintStream
+
+15.OutputStreamWriter的主要作用是解码，不处理缓冲。
+
+16.BufferedWriter：
+    （1）有缓冲
+    （2）writer是没有真正写出去，只是往数组里添加元素。
+    （3）flush被调用的时候，才真正写出去。
+
+17.StringWriter:
+    （1）本质是一个StringBuffer
+    （2）flush什么也没干
+
+应用型人才，不是学术型人才
+    1.先学基础，啥也不要想，基础一定是一个一个的点
+    2.综合运用，可堂上不可能有真正的应用的
+    3.把尽可能多的点串联起来（基础全部学完以后）
+    4.在你的知识架构当中，有他的一席之地
+    5.工作中，具体的业务千变万化，中间会有无数要求，而这些要求在课堂上是很难模拟出来的，可能在其中的某一个点，
+        会有更加深入的要求，那么这个时候才是你真正技术突破的时候。
+    6.知道，大概怎么用，有什么用，什么时候用，优点是什么，缺点是什么，作用：
+        （1）面试
+        （2）百度：你要是连知道都不知道，根本无从百度。
