@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<books>
+    <!--图书信息-->
+    <book id="bk101">
+        <author>王珊</author>
+        <title>.NTE高级编程</title>
+        <description> 包含C#框架和网络编程等</description>
+    </book>
+    <book id="bk102">
+        <author>李明明</author>
+        <title>XML基础编程</title>
+        <description><![CDATA[包含XML基础概念和基本作用]]></description>
+    </book>
+</books>
