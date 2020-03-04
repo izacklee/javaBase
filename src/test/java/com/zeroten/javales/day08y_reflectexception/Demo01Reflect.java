@@ -66,6 +66,17 @@ public class Demo01Reflect {
 //        Field f = Person.class.getDeclaredField("id");
         Field f = pc.getDeclaredField(idKey); // 获取到参数名 --> 得到属性对象
         // 判断（课后思考：如何验证是否是基本数据类型）---------- Number.class----> Integer.class
+        /*
+             思路：
+                1.把8种基本数据类型存入数组
+                    Class[] cs = new Class[]{
+                        int.class,byte.class
+                    };
+                2.依次判断类型是否存在
+                    Array.asList(cs).contains(int.class);
+                ...
+
+        */
         Class<? extends Number> number = f.getType().asSubclass(Number.class);
 //        System.out.println(number); // class java.lang.Integer
         if (number != null) {
