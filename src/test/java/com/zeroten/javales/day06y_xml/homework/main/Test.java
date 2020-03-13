@@ -22,7 +22,14 @@ public class Test {
 
     public static void run() {
         String pathName = "src/test/java/com/zeroten/javales/day06y_xml/homework";
-
-        System.out.println(fileServer.showFiles(pathName));
+        boolean b = fileServer.readFileWrite(pathName, null, null);
+        // 读xml文件
+        if (b) {
+            System.out.println("xml文件写入成功，下面是读取的内容。。。");
+            System.out.println("");
+            fileServer.readXML();
+        } else {
+            System.out.println("xml文件写入失败。。。");
+        }
     }
 }
