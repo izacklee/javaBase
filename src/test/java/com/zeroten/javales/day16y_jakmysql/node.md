@@ -77,10 +77,10 @@
             // 以下命令切换到mysql目录下执行    
         6) 创建保存数据的目录：mkdir /data/mysql  
         7) 修改所属用户组用户(用户和用户组以及其所有子目录和文件)：sudo chown -R mysql:mysql ./
-        8) 安装（指定mysql用户和数据地址）： 
-            sudo rm -rf *          
+        8) 安装（指定mysql用户和数据地址）：          
             mac系统执行：sudo ./bin/mysql_install_db --user=mysql --datadir=/usr/local/mysql/data/mysql
             linux执行：./script/mysql_install_db --user=mysql --datadir=/usr/local/mysql/data/mysql
+            (sudo rm -rf * // 删除当前目录下所有的文件和文件夹) 
         9) 设置启动：sudo cp -R ./support-files/mysql.server /usr/local/bin/mysqld
             linux执行：cp ./support-files/mysql.server /etc/init.d/mysqld
         10) 分配访问权限：chmod -R 755 /usr/local/bin/mysqld    
@@ -97,6 +97,17 @@
                 a.启动服务：sudo mysqld start  
                 b.查看状态：sudo mysqld status 
                 c.关闭服务：sudo mysqld stop  
+            启动mysql报：.. ERROR! The server quit without updating PID file错误
+               问题原因是：操作失误，事务出错，mysql崩溃。
+               解决办法：
+                    a.去修改/etc/my.cnf文件配置，开启log_bin二进制日志
+                    b.增加如下配置:
+                        # 开启log_bin二进制日志（必须）
+                        log_bin=ON
+                        # server_id的值>=0的随机写，MySQL5.7不配置这个无法启动，官网有说明（必须）
+                        server_id=1
+                        # binlog的格式,row格式的日志记录的是底层数据真正的变化，可避免主从复制数据不一致（可选，主从数据库才必须）
+                        binlog_format=ROW    
         17) 给mysql设置密码：
              a.执行命令：mysql -uroot -p
              b.第一次进入mysql没有密码，直接回车进入       
@@ -134,7 +145,7 @@
     (2) 如果安装出错了：
         1) 删除mysql目录
         2）删除(mac)/usr/local/bin/mysqld； (linux)/etc/init.d/mysqld
-        删除完之后就可以重装了                
+        删除完之后就可以重装了                 
                   
                      
                 
