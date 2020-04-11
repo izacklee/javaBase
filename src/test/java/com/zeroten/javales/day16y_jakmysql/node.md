@@ -109,7 +109,8 @@
                         # binlog的格式,row格式的日志记录的是底层数据真正的变化，可避免主从复制数据不一致（可选，主从数据库才必须）
                         binlog_format=ROW    
         17) 给mysql设置密码：
-             a.执行命令：mysql -uroot -p
+             a.执行命令：mysql -uroot -p  // -bash: mysql: command not found 在mysql环境变量配置好的情况下出现这个提示，
+                     执行source /etc/profile，刷新环境配置文件，再执行即可
              b.第一次进入mysql没有密码，直接回车进入       
                 注意：如果提示ERROR 1045 (28000): Access denied for user 'root'@'localhost' (using password: NO)
                 解决方式：
