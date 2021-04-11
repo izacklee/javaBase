@@ -116,6 +116,9 @@
                 解决方式：
                     a) 关闭mysql服务
                     b) 到/etc/my.cnf配置文件最后处，增加skip-grant-tables（跳过安全验证）
+                        或者（命令直接登录 跳过安全验证）：
+                            mysqld_safe --skip-grant-tables &
+                            mysql
                     c) 重新启动mysql服务，再次尝试登录即可
               c.SHOW DATABASES; // 查看所有数据库列表
               d.USE mysql;  // 切换库
