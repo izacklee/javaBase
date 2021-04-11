@@ -206,6 +206,7 @@
             # 查得快的离它最远，查得慢的离他最近，过滤最多的离他最远，过滤最少的离他最近
             SELECT deptno, ename, sal FROM emp WHERE deptno!=10 AND sal in (SELECT sal FROM emp WHERE deptno=10);
     (9) 临时视图（临时表） 
+        平时用临时视图，一般不用永久视图，没意义，本身用到视图的情况就比较少。
         1) 临时表必须起别名
         2）临时表的字段需要起别名
         练习：
@@ -222,6 +223,10 @@
         3）时间
         4）逻辑
         练习：
+            # 查看当前使用的数据库
+            SELECT DATABASE();
+            # 修改表名
+            RENAME TABLE USER_TABLE TO user_table;
             # --函数--
             # 拼接字符串
             SELECT CONCAT('%','A','%'); # %A%
