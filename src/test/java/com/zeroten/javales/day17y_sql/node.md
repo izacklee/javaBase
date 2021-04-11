@@ -40,15 +40,18 @@
         1）数值
             a.非常小的数据：tinyint
             b.标准整数：int(11)
-            c.浮点数：double(7,2)
+            c.浮点数：double(7,2) // 数值类型，在索引树上很好找，也很好判断。建议多使用，不建议使用字符串类型
         2）字符串
             a.char：索引快，费空间，上限容量小（固定长度，0~255包含边界值）
             b.varchar：索引相对慢，省空间，上限容量大（可变长度，0~65536包含边界值）
             c.text：文本串(容量2^16-1字节) 
         3）时间
-            a.DATETIME：yyyy-MM-dd hh:mm:ss
-            b.TIMESTAMP：yyyyMMddhhmmss
-            c.varchar/bigint：1970-1-1 0:0:0-当前毫秒数
+            a.DATETIME：yyyy-MM-dd hh:mm:ss // 有时区问题（如不需要考虑时区，并发时推荐）
+            b.TIMESTAMP：yyyyMMddhhmmss // 存在单个用户计算时区问题
+            c.varchar/bigint：1970-1-1 0:0:0-当前毫秒数 // 推荐 不考虑毫秒时用INT
+            // TINYINT（1个字节 默认值4） INT（4个字节 默认值11）BIGINT（8个字节 默认值20）  
+            插入效率：DATETIME > TIMESTAMP > INT 读取效率：INT > TIMESTAMP > DATETIME
+            储存空间：DATETIME > TIMESTAMP = INT
         4）NULL  
             a.代表没有
             b.不可以参与数值运算，否则结果是null
