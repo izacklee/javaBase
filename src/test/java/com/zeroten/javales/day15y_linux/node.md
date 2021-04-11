@@ -68,7 +68,8 @@
                             （例如：rwx=4+2+1=7,r-x=4+0+1=5,---=0+0+0=0）
                         符号：u(user)、g(group)、o(other)、a(all)
                             使用+(添加权限)、-(删除权限)、=(设置权限)
-                            （例如：a=rwx即等同于777; chmod a=rwx download、 chmod go-x download）
+                            （例如：a=rwx即等同于777（用户、用户组、其他三者的权限）; 
+                                  chmod a=rwx download、 chmod go-x download）
        (6) Linux的目录
             典型目录            可分享的            不可分享的
             不可改变的         /usr(软件存放处)     /etc(配置文件)
@@ -83,6 +84,7 @@
                 删除目录        rmdir(只能删除空目录，含有子目录时不能删除，通常用rm) 
                     rm删除文件夹时要加r，否则有多层级文件夹，将删除失败。如：rm -r test 
                     边创建边赋权：mkdir -m 777 test8
+                    创建多层级目录：mkdir -p ./hdfs/data
             2) 复制、删除和移动
                 创建文件        touch
                 复制            cp(夸服务器复制scp)
