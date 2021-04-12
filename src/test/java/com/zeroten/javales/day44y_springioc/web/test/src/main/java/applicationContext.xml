@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+               http://www.springframework.org/schema/beans
+               http://www.springframework.org/schema/beans/spring-beans.xsd
+               http://www.springframework.org/schema/aop
+               http://www.springframework.org/schema/aop/spring-aop.xsd
+               http://www.springframework.org/schema/context
+               http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean name="baseDao" class="com.m.dao.BaseDaoImpl" scope="singleton"></bean>
+
+    <!--    lazy-init="true" 延时加载-->
+    <bean name="baseDao2" class="com.m.dao.BaseDaoImpl2"
+    factory-method="instance" lazy-init="true"></bean>
+
+    <!--  对象注入  -->
+    <bean name="daoBean" class="com.m.test.Dao">
+        <property name="map">
+            <map>
+                <entry key="k1" value="v1"></entry>
+                <entry key="k2" value="v2"></entry>
+                <entry key="k3" value="v3"></entry>
+            </map>
+        </property>
+        <property name="pro">
+            <props>
+                <prop key="n1">test1</prop>
+                <prop key="n2">test2</prop>
+                <prop key="n3">test3</prop>
+            </props>
+        </property>
+    </bean>
+    <bean name="serviceBean" class="com.m.test.Service">
+        <property name="dao" ref="daoBean"></property>
+
+        <!--   Array，List，Set注入     -->
+        <property name="strs">
+            <array>
+                <value>strs1</value>
+                <value>strs2</value>
+                <value>strs3</value>
+            </array>
+        </property>
+        <property name="strList">
+            <list>
+                <value>strList1</value>
+                <value>strList2</value>
+                <value>strList3</value>
+            </list>
+        </property>
+        <property name="strSet">
+            <set>
+                <value>strSet1</value>
+                <value>strSet2</value>
+                <value>strSet3</value>
+            </set>
+        </property>
+
+
+    </bean>
+    <bean name="controller" class="com.m.test.Controller">
+<!--        <property name="service" ref="serviceBean"></property>-->
+
+        <!--  成员变量值的注入      -->
+<!--        <property name="appName" value="testApp"></property>-->
+<!--        <property name="appVersion" value="1"></property>-->
+
+        <!--    构造注入属性    -->
+        <constructor-arg name="service" ref="serviceBean" index="0"></constructor-arg>
+        <constructor-arg name="appName" value="testApp" index="1" type="java.lang.String"></constructor-arg>
+        <constructor-arg name="appVersion" value="2" index="2" type="java.lang.Integer"></constructor-arg>
+    </bean>
+
+</beans>
