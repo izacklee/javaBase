@@ -8,7 +8,7 @@ import org.springframework.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 /**
- * cglib代理测试类
+ * cglib动态代理测试类
  */
 public class CGLibProxyTest {
 
