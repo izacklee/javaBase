@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <bean name="fileCloudDao" class="com.m.dao.impl.FileCloudDaoImpl" scope="prototype"></bean>
+    <bean name="fileHistoryDao" class="com.m.dao.impl.FileHistoryDaoImpl" scope="prototype"></bean>
+    <bean name="userDao" class="com.m.dao.impl.UserDaoImpl" scope="prototype"></bean>
+    <bean name="userVolumeDao" class="com.m.dao.impl.UserVolumeDaoImpl" scope="prototype"></bean>
+
+    <bean name="baseDao" class="com.m.dao.impl.BaseDaoImpl" scope="prototype"></bean>
+    <bean name="baseService" class="com.m.service.impl.BaseServiceImpl" scope="prototype">
+        <opt name="dao" ref="baseDao"></opt>
+    </bean>
+
+    <bean name="userService" class="com.m.service.impl.UserServiceImpl" scope="prototype">
+        <opt name="userDao" ref="userDao"></opt>
+        <opt name="userVolumeDao" ref="userVolumeDao"></opt>
+    </bean>
+
+    <bean name="fileService" class="com.m.service.impl.FileServiceImpl" scope="prototype">
+        <opt name="fileCloudDao" ref="fileCloudDao"></opt>
+        <opt name="fileHistoryDao" ref="fileHistoryDao"></opt>
+    </bean>
+
+    <bean name="hDFSService" class="com.m.service.impl.HDFSServiceImpl" scope="prototype">
+    </bean>
+
+    <bean name="baseController" class="com.m.controller.BaseController" scope="prototype">
+        <opt name="service" ref="baseService"></opt>
+    </bean>
+
+    <bean name="fileController" class="com.m.controller.FileController" scope="prototype">
+        <opt name="fileService" ref="fileService"></opt>
+        <opt name="userService" ref="userService"></opt>
+        <opt name="hDFSService" ref="hDFSService"></opt>
+    </bean>
+    <interceptors>
+        <interceptor>
+            <mapping path="*.do"></mapping>
+            <bean class="com.m.controller.interceptor.MyInterceptor"></bean>
+        </interceptor>
+<!--        <interceptor>-->
+<!--            <mapping path="base/*"></mapping>-->
+<!--            <bean class="com.m.controller.interceptor.MyInterceptor2"></bean>-->
+<!--        </interceptor>-->
+    </interceptors>
+</beans>
