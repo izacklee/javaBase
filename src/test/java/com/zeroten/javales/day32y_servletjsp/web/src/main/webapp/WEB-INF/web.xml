@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+    http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" >
+
+  <display-name>Archetype Created Web Application</display-name>
+
+  <!--  Servlet声明-->
+  <servlet>
+    <servlet-name>base</servlet-name>
+    <servlet-class>com.m.controller.base.BaseServlet</servlet-class>
+    <!--    配置初始化的信息-->
+    <init-param>
+      <param-name>charSetContent</param-name>
+      <param-value>utf-8</param-value>
+    </init-param>
+  </servlet>
+  <!--  映射-->
+  <servlet-mapping>
+    <servlet-name>base</servlet-name>
+    <url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+
+<!--  <servlet>-->
+<!--    <servlet-name>test1</servlet-name>-->
+<!--    <servlet-class>com.m.servlet.TestServlet1</servlet-class>-->
+<!--    <init-param>-->
+<!--      <param-name>charSetContent</param-name>-->
+<!--      <param-value>utf-8</param-value>-->
+<!--    </init-param>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>test1</servlet-name>-->
+<!--    <url-pattern>/test1.do</url-pattern> &lt;!&ndash; 基础路径 &ndash;&gt;-->
+<!--    &lt;!&ndash; <url-pattern>/demo/test1.do</url-pattern> &ndash;&gt; &lt;!&ndash; 绝对路径 &ndash;&gt;-->
+<!--    &lt;!&ndash; <url-pattern>*.do</url-pattern> &ndash;&gt;&lt;!&ndash; 使用通配符 指定后缀 以.do结尾的都可以 &ndash;&gt;-->
+<!--    &lt;!&ndash; <url-pattern>/test/*</url-pattern> &ndash;&gt; &lt;!&ndash; 指定前缀 &ndash;&gt;-->
+
+<!--  </servlet-mapping>-->
+<!--  <servlet>-->
+<!--    <servlet-name>test2</servlet-name>-->
+<!--    <servlet-class>com.m.servlet.TestServlet2</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>test2</servlet-name>-->
+<!--    <url-pattern>/test2.do</url-pattern>-->
+<!--  </servlet-mapping>-->
+
+<!--  <servlet>-->
+<!--    <servlet-name>test3</servlet-name>-->
+<!--    <servlet-class>com.m.servlet.TestServlet3</servlet-class>-->
+<!--  </servlet>-->
+<!--  <servlet-mapping>-->
+<!--    <servlet-name>test3</servlet-name>-->
+<!--    <url-pattern>/test3.do</url-pattern>-->
+<!--  </servlet-mapping>-->
+</web-app>
