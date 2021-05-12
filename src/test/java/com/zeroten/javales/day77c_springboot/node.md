@@ -12,5 +12,6 @@
    Spring的核心就是容器（bean）
    最初写接口是用Servlet，请求、转发、页面都在一个大的项目里，效率低，结构不清晰，而且非常的重，这时候就延伸出来了
    许许多多的MVC框架，SpringBoot就是其中一种。
-   看下SpringBoot的jar包，JarLauncher可执行jar包（基础jar包）的入口类文件源码，BootApplication自定义jar包（框架
-   jar包）的入口类文件源码。 不能把JarLauncher入口类去掉只保留BootApplication入口类，这样会导致基础jar包无法执行。       
+   看下SpringBoot的jar包，JarLauncher可执行jar包（基础jar包）的入口类文件源码，找到BootApplication（这个名字无所谓
+   主要是由注解@SpringBootApplication有关）自定义jar包（框架jar包）的入口类文件源码。 
+   不能把JarLauncher入口类去掉只保留BootApplication入口类，这样会导致基础jar包无法执行。       
