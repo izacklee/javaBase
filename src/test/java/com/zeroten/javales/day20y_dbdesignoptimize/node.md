@@ -87,6 +87,10 @@
             容易导致索引失效的写最左边，过滤范围最大的写WHERE最右边。
             EXPLAIN SELECT ename FROM emp WHERE comm IS NOT NULL AND job LIKE "%A%" AND sal>3000;
         2）不要使用隐式转换
+            假设列上有索引：
+            varchar column = int value (左边的varchar列会被转变成int，此时不走索引)
+            int column = varchar value (右边varchar的值会被转变成int， 走索引)
+            int 优先级比较高，查询条件中如果有int，另一方会被转换成int，所以查询语句里都带上 ‘引号’ 就可以避免这种问题
             EXPLAIN SELECT ename FROM emp WHERE deptno="20"; # deptno为int 这么写会发生隐式转换
         3）不要把字段和值颠倒写
             EXPLAIN SELECT ename FROM emp WHERE "3000"=sal; 
